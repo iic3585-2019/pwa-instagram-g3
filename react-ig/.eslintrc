@@ -1,0 +1,27 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "ecmaVersion": 8,
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/jsx-filename-extension": [0, { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"]
+      }
+    ],
+    "no-underscore-dangle": ["error", { "allow": ["_id", "__t"] }]
+  },
+  "plugins": ["react"]
+}
