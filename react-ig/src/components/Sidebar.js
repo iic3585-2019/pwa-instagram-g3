@@ -1,27 +1,62 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOut } from '../actions/auth';
 
-export default function Sidebar() {
-  return (
-    <ul className="nav flex-column top-padded">
-      <li>
-        <NavLink to="/" className="nav-link active">
-          Home
-        </NavLink>
-      </li>
-      <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span>User</span>
-      </h6>
-      <li className="nav-item">
-        <NavLink to="/login" className="nav-link">
-          Login
-        </NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink to="/signup" className="nav-link">
-          Signup
-        </NavLink>
-      </li>
-    </ul>
-  );
+class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    dispatch(signOut());
+  }
+
+  render() {
+    const { isAuthenticated, user } = this.props;
+    return (
+      <ul className="nav flex-column top-padded">
+        {isAuthenticated ? (
+          <div>
+            <li className="nav-item">
+              <NavLink to="/" className="nav-link">
+                {user.name}
+              </NavLink>
+            </li>
+            <hr />
+            <li className="nav-item">
+              <NavLink onClick={this.onClick} to="/logout" className="nav-link">
+                Logout
+              </NavLink>
+            </li>
+          </div>
+        ) : (
+          <div>
+            <li className="nav-item">
+              <NavLink to="/login" className="nav-link">
+                Login
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/signup" className="nav-link">
+                Register
+              </NavLink>
+            </li>
+          </div>
+        )}
+      </ul>
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.auth.user !== null,
+    user: state.auth.user,
+  };
+}
+
+export default connect(mapStateToProps)(Sidebar);

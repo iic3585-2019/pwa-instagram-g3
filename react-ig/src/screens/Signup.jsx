@@ -38,12 +38,13 @@ class Signup extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(signUp(this.state, this.props.history));
+    const { dispatch, history } = this.props;
+    dispatch(signUp(this.state, history));
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input

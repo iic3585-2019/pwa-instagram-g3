@@ -1,0 +1,39 @@
+{
+  "name": "instagram",
+  "version": "1.0.0",
+  "description": "Instagram App for IIC3585",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "lighthouse": "^4.3.0",
+    "mongoose": "^5.5.3",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "nodemon": "^1.18.11"
+  },
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iic3585-2019/pwa-instagram-g3.git"
+  },
+  "author": "Sebasthian von Bergen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iic3585-2019/pwa-instagram-g3/issues"
+  },
+  "homepage": "https://github.com/iic3585-2019/pwa-instagram-g3#readme"
+}

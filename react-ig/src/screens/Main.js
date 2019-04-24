@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
+import Uploader from '../components/Uploader';
 
 const noMatch = () => (
   <div>
@@ -38,4 +40,18 @@ class Main extends Component {
   }
 }
 
-export default withRouter(connect()(Main));
+Main.defaultProps = {
+  isAuthenticated: false,
+};
+
+Main.propTypes = {
+  isAuthenticated: PropTypes.bool,
+};
+
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.auth.user !== null,
+  };
+}
+
+export default withRouter(connect(mapStateToProps)(Main));

@@ -73,4 +73,4 @@ export const signUp = (data, history) => async (dispatch) => {
   }
 };
 
-export default { signIn, signOut };
+export default { signIn, signOut, signUp };

@@ -36,6 +36,7 @@ class Login extends React.Component {
             type="email"
             className="form-control"
             id="email"
+            name="email"
             aria-describedby="emailHelp"
             placeholder="Enter email"
           />
@@ -50,6 +51,7 @@ class Login extends React.Component {
             type="password"
             className="form-control"
             id="password"
+            name="password"
             placeholder="Password"
           />
         </div>
