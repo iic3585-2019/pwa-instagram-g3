@@ -13,7 +13,10 @@ class Uploader extends Component {
   _handleSubmit(event) {
     event.preventDefault();
     const { handleSubmit } = this.props;
-    handleSubmit(this.state);
+    handleSubmit({
+      text: event.target.text.value,
+      img: this.state.files[0],
+    });
   }
 
   handleDrop(files) {

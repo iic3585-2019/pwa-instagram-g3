@@ -26,7 +26,7 @@ const getAllPosts = () => async (dispatch) => {
 };
 
 const sendPost = data => async (dispatch) => {
-  dispatch(request(postConstants.POST_SEND_REQUEST));
+  dispatch(request(postConstants.POSTS_SEND_REQUEST));
   const res = await createPost(data);
   if (res.error) {
     dispatch(reject(res, postConstants.POSTS_SEND_REQUEST_FAILURE));
