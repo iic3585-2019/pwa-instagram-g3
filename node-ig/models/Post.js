@@ -2,18 +2,23 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const PostSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+const PostSchema = new Schema(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    text: {
+      type: String,
+    },
+    img: {
+      type: String,
+    },
   },
-  text: {
-    type: String,
+  {
+    timestamps: true, // Saves createdAt and updatedAt as dates. createdAt will be our timestamp.
   },
-  img: {
-    type: String,
-  },
-});
+);
 
 PostSchema.virtual('posts', {
   ref: 'Like',

@@ -7,8 +7,8 @@ export default (
   action,
 ) => {
   switch (action.type) {
-    case postConstants.POSTS_FETCH_ALL:
-      return { ...state, data: [state.data, ...action.payload] };
+    case postConstants.POSTS_FETCH_ALL_SUCCESS:
+      return { ...state, data: action.payload };
     case postConstants.POST_SEND_REQUEST: {
       return { ...state, uploadingPost: true };
     }

@@ -11,10 +11,13 @@ router.get('/:pid', (req, res) => {
   res.json(post);
 });
 
-router.get('/', (req, res, next) => {
-  Post.find({})
-    .then(p => res.json(p))
-    .catch(err => next(err));
+router.get('/', async (req, res, next) => {
+  try {
+    const posts = await Post.find({}).populate({ path: 'user' });
+    res.json(posts);
+  } catch (e) {
+    next(e);
+  }
 });
 
 router.post('/', (req, res, next) => {

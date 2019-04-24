@@ -31,7 +31,7 @@ class Uploader extends Component {
   render() {
     const { files } = this.state;
     return (
-      <form onSubmit={this._handleSubmit}>
+      <form onSubmit={this._handleSubmit} style={[{ ...this.props.style }]}>
         <p>Create post</p>
         <div className="form-group">
           <DragAndDrop handleDrop={this.handleDrop}>

@@ -34,3 +34,16 @@ main {
 .top-padded {
   padding-top: 48px;
 }
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.col {
+  flex: 1;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+  max-width: calc(50% - 20px);
+}
