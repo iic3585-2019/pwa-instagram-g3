@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import getAllPosts from '../actions/user';
+import { getAllPosts, sendPost } from '../actions/user';
 import Uploader from '../components/Uploader';
 
 class Home extends Component {
@@ -15,9 +15,16 @@ class Home extends Component {
     }
   }
 
+  handleSubmit(data) {
+    const { dispatch } = this.props;
+    dispatch(sendPost(data));
+  }
+
   render() {
     const { isAuthenticated } = this.props;
-    return <div>{isAuthenticated && <Uploader {...this.props} />}</div>;
+    return (
+      <div>{isAuthenticated && <Uploader handleSubmit={this.handleSubmit} {...this.props} />}</div>
+    );
   }
 }
 

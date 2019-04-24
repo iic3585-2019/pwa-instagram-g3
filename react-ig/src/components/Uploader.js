@@ -7,11 +7,13 @@ class Uploader extends Component {
     super(props);
     this.state = { files: [] };
     this.handleDrop = this.handleDrop.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
+  _handleSubmit(event) {
     event.preventDefault();
+    const { handleSubmit } = this.props;
+    handleSubmit(this.state);
   }
 
   handleDrop(files) {
@@ -26,7 +28,7 @@ class Uploader extends Component {
   render() {
     const { files } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this._handleSubmit}>
         <p>Create post</p>
         <div className="form-group">
           <DragAndDrop handleDrop={this.handleDrop}>

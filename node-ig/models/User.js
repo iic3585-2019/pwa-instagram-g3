@@ -16,4 +16,6 @@ UserSchema.virtual('posts', {
   options: { sort: { updatedAt: -1 } },
 });
 
+UserSchema.set('toJSON', { virtuals: true });
+
 module.exports = mongoose.model('User', UserSchema);

@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 
 const PostSchema = new Schema({
   user: {
-    type: Schema.Types.ObjectId, ref: 'User',
+    type: Schema.Types.ObjectId,
+    ref: 'User',
   },
   text: {
     type: String,
@@ -12,9 +13,16 @@ const PostSchema = new Schema({
   img: {
     type: String,
   },
-  likes: [{
-    type: Schema.Types.ObjectId, ref: 'Like',
-  }],
 });
+
+PostSchema.virtual('posts', {
+  ref: 'Like',
+  localField: '_id',
+  foreignField: 'post',
+  justOne: false,
+  options: { sort: { updatedAt: -1 } },
+});
+
+PostSchema.set('toJSON', { virtuals: true });
 
 module.exports = mongoose.model('Post', PostSchema);
