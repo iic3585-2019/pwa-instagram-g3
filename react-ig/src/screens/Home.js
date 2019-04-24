@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import getAllPosts from '../actions/user';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    const {
+      match: { params },
+      dispatch,
+    } = this.props;
+    dispatch(getAllPosts());
   }
 
   render() {

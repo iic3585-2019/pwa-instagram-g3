@@ -1,4 +1,5 @@
 import { postConstants } from '../constants';
+import { getAll } from '../services/postService';
 
 const request = constant => ({
   type: constant,
@@ -14,9 +15,9 @@ const success = (res, constant) => ({
   payload: res,
 });
 
-const getAll = () => async (dispatch) => {
+const getAllPosts = () => async (dispatch) => {
   dispatch(request(postConstants.POSTS_FETCH_ALL_REQUEST));
-  const res = await postConstants.getAll();
+  const res = await getAll();
   if (res.error) {
     dispatch(reject(res, postConstants.POSTS_FETCH_ALL_FAILURE));
   } else {
@@ -24,4 +25,4 @@ const getAll = () => async (dispatch) => {
   }
 };
 
-export default getAll;
+export default getAllPosts;
