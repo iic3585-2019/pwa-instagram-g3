@@ -8,8 +8,9 @@ const getAll = async () => jsonRequest('http://localhost:3000/api/posts', {
 const getById = async id => jsonRequest(`http://localhost:3000/api/posts/${id}`, {
   headers: authHeader(),
 });
+
 const createPost = async data => jsonRequest('http://localhost:3000/api/posts/', {
-  headers: authHeader(),
+  headers: { 'Content-Type': 'application/json', ...authHeader() },
   method: 'POST',
   body: JSON.stringify(data),
 });

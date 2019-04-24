@@ -1,6 +1,11 @@
 import { postConstants } from '../constants';
 
-export default (state = {}, action) => {
+export default (
+  state = {
+    data: [],
+  },
+  action,
+) => {
   switch (action.type) {
     case postConstants.POSTS_FETCH_ALL:
       return { ...state, data: [state.data, ...action.payload] };
@@ -15,7 +20,7 @@ export default (state = {}, action) => {
         ...state,
         errorPosting: true,
         uploadingPost: false,
-        data: [state.data, ...action.payload],
+        data: [...state.data, action.payload],
       };
     }
     default:

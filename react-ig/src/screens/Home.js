@@ -4,6 +4,11 @@ import { getAllPosts, sendPost } from '../actions/user';
 import Uploader from '../components/Uploader';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentDidMount() {
     const {
       match: { params },

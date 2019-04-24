@@ -52,7 +52,13 @@ async function create(userParam) {
   }
 }
 
+async function getById(id) {
+  const user = await User.findById(id).select('-hash');
+  return user;
+}
+
 module.exports = {
   authenticate,
   create,
+  getById,
 };
