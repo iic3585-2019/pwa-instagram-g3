@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
-export default function Sidebar(props) {
+export default function Sidebar() {
   return (
     <ul className="nav flex-column top-padded">
       <li>
