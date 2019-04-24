@@ -24,6 +24,33 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBI9AkVux66l7ae_aPun1bxRzGE9YZyEQo",
+        authDomain: "pwa-instagram-g3.firebaseapp.com",
+        databaseURL: "https://pwa-instagram-g3.firebaseio.com",
+        projectId: "pwa-instagram-g3",
+        storageBucket: "pwa-instagram-g3.appspot.com",
+        messagingSenderId: "455451894461"
+      };
+      firebase.initializeApp(config);
+  </script>
+  <script>
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+    .then(function() {
+      console.log('Notification permission granted.');
+      return messaging.getToken();
+    })
+    .then(function(token) {
+      console.log(token);
+    })
+    .catch(function(err) {
+      console.log('Unable to get permission to notify.', err);
+    })
+  </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
